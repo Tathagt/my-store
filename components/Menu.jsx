@@ -9,6 +9,14 @@ const data = [
     { id: 4, name: "Contact", url: "/contact" },
 ];
 
+const subMenuData = [
+    {id : 1, name: "Jordan", doc_count: 11},
+    {id : 2, name: "Jordan", doc_count: 8},
+    {id : 3, name: "Jordan", doc_count: 64},
+    {id : 4, name: "Jordan", doc_count: 107},
+]
+
+
 
 
 const Menu = ({showCatMenu, setShowCatMenu}) => {
@@ -27,7 +35,21 @@ const Menu = ({showCatMenu, setShowCatMenu}) => {
 
                             {showCatMenu && (
                                 <ul className='bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg'>
-                                    {}
+                                    {subMenuData.map((submenu)=> {
+                                        return (
+                                            <Link key={submenu.id}
+                                            href="/"
+                                            onClick={()=> {
+                                            setShowCatMenu(false);
+                                            setMobileMenu(false);
+                                            }}>
+                                                <li className='py-4 px-8 border-t flex justify-between'>
+                                                    {submenu.name}
+                                                    <span className='opacity-50 text-sm'>78</span>
+                                                </li>
+                                            </Link>
+                                        );
+                                    })}
                                 </ul>
                             )}
                         </li>
